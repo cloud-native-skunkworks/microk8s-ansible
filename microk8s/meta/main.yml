@@ -1,7 +1,7 @@
 galaxy_info:
-  author: your name
-  description: your role description
-  company: your company (optional)
+  author: Alex Jones
+  description: A role to install microk8s
+  company: Canonical
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
