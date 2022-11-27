@@ -33,10 +33,10 @@
     state: present
     channel: 1.25/stable
 
-- name: install headers using meta package
+- name: Install headers using meta package
   apt:
-    pkg:
-    - linux-headers-generic
+    name: linux-headers-generic
+    state: present
 
 - name: Install jq
   apt:
