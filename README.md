@@ -9,5 +9,15 @@ To run the installation perform the following activities
 ## Networks
 
 By default I have set the makefile to target 'external_addresses' group
-With the assumption you're not on the same network as the target hosts.
+With the assumption that the hosts might have an external IP address e.g. tailscale.
+
 If that's not true you can change the target group to 'local_addresses' in the makefile.
+
+## Addons
+
+Add your addons to be enabled in `group_vars/all`
+
+```
+enable_addons:
+  - dns
+```

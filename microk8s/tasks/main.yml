@@ -56,6 +56,11 @@
   register: command_result
   ignore_errors: True
 
+- name: Enable addons
+  when: inventory_hostname in groups["leader"]
+  shell: "microk8s enable {{ item }}"
+  with_items: "{{ enable_addons }}"
+
 - name: Copy kubeconfig
   when: inventory_hostname in groups["leader"]
   shell: "microk8s config > /home/ubuntu/.kube/config"
