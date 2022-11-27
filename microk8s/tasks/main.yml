@@ -1,4 +1,16 @@
 ---
+- name: Check OS is Ubuntu
+  fail:
+    msg: "This role only supports Ubuntu"
+  when: ansible_distribution != "Ubuntu"
+
+- name: Set hugepages
+  sysctl:
+    name: vm.nr_hugepages
+    value: 1024
+    sysctl_set: yes
+    state: present
+    reload: yes
 # tasks file for microk8s
 - name: Update the /etc/hosts file with node name
   tags: etchostsupdate
