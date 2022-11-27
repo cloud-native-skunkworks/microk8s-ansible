@@ -11,7 +11,7 @@
     sysctl_set: yes
     state: present
     reload: yes
-# tasks file for microk8s
+
 - name: Update the /etc/hosts file with node name
   tags: etchostsupdate
   become: yes
@@ -27,11 +27,16 @@
   with_items: "{{groups['local_addresses']}}"
 
 - name: Install MicroK8s
-  community.general.snap:
+  snap:
     name: microk8s
     classic: yes
     state: present
     channel: 1.25/stable
+
+- name: install headers using meta package
+  apt:
+    pkg:
+    - linux-headers-generic
 
 - name: Install jq
   apt:
