@@ -13,6 +13,8 @@ With the assumption that the hosts might have an external IP address e.g. tailsc
 
 If that's not true you can change the target group to 'local_addresses' in the makefile.
 
+<img src="images/network.png" width="800px;" />
+
 ## Addons
 
 Add your addons to be enabled in `group_vars/all`
