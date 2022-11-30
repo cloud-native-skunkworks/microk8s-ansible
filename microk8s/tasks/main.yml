@@ -4,6 +4,11 @@
     msg: "This role only supports Ubuntu"
   when: ansible_distribution != "Ubuntu"
 
+- name: install nvme-tcp
+  modprobe:
+    name: nvme-tcp
+    state: present
+  
 - name: Set hugepages
   sysctl:
     name: vm.nr_hugepages
