@@ -38,6 +38,15 @@
     state: present
     channel: 1.25/stable
 
+- name: Ensure MicroK8s service is running
+  service:
+    name: snap.microk8s.daemon-kubelite.service 
+    state: started
+  register: myserviceDetails
+  until: myserviceDetails.status.ActiveState == "active"
+  retries: 15
+  delay: 20
+
 - name: Install headers using meta package
   apt:
     name: linux-headers-generic
@@ -61,7 +70,7 @@
 
 - name: Join cluster
   when: inventory_hostname not in groups["leader"]
-  shell: "microk8s join {{ hostvars[groups['leader'][0]]['join_token'].stdout }}"
+  shell: "microk8s join {{ hostvars[groups['leader'][0]]['join_token'].stdout }} --worker"
   changed_when: false
   register: command_result
   ignore_errors: True
