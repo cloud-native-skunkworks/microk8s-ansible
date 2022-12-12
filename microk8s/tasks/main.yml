@@ -36,7 +36,7 @@
     name: microk8s
     classic: yes
     state: present
-    channel: 1.25/stable
+    channel: "{{ microk8s_track }}"
 
 - name: Ensure MicroK8s service is running
   service:

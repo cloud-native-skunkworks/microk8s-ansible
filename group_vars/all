@@ -6,3 +6,5 @@ ansible_ssh_pass: raspbernetes
 ansible_sudo_pass: raspbernetes
 enable_addons:
   - dns
+
+microk8s_track: 1.26/stable
